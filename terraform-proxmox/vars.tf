@@ -19,7 +19,7 @@ variable "template_name" {
 variable "ips" {
   description = "IPs of the VMs, respective to the hostname order"
   type        = list(string)
-  default     = ["192.168.99.231"]
+  default     = ["192.168.99.231", "192.168.99.232"]
 }
 variable "ssh_keys" {
   type = map(any)
@@ -32,6 +32,6 @@ variable "ssh_password" {
   default = "var.ssh_password"
 }
 variable "user" {
-  default = "var.user"
+  default     = "var.user"
   description = "User used to SSH into the machine and provision it"
 }

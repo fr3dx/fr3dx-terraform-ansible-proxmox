@@ -1,9 +1,9 @@
 variable "Test_Env" {
   description = "declare env var"
-  type       = string
+  type        = string
 }
 
 output "Test_Env" {
   description = "Echo env var"
-  value       = "${var.Test_Env}"
+  value       = var.Test_Env
 }

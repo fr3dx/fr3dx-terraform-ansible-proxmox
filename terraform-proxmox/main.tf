@@ -6,8 +6,8 @@ provider "proxmox" {
 }
 
 resource "proxmox_vm_qemu" "cloudinit-test" {
-  count       = 1
-  name        = "tf-vm-${count.index + 1}"
+  count       = terraform.workspace == "default" ? 2 : 1
+  name        = "tf-${terraform.workspace}-0${count.index + 1}"
   target_node = var.proxmox_host
   clone       = var.template_name
   agent       = 0
