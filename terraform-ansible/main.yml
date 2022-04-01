@@ -1,0 +1,18 @@
+---
+- name: cat hostname
+  hosts: 192.168.99.231
+  become: true
+  gather_facts: false
+
+
+  tasks:
+  - name: create file with content
+    shell: echo "TEST" > file1
+
+  - name: get content of the file
+    shell: cat file1
+    register: fcont
+
+  - name: print content of the file
+    debug:
+      msg: "{{ fcont }}"
