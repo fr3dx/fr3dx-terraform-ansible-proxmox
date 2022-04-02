@@ -56,7 +56,7 @@ resource "proxmox_vm_qemu" "cloudinit-test" {
   }
 
   provisioner "local-exec" {
-    working_dir = "../terraform-ansible"
+    working_dir = terraform.workspace == "default" ? "../terraform-ansible-default" : "../terraform-ansible-staging"
     command     = "ansible-playbook -u ${var.user} --key-file ${var.ssh_keys["priv"]} -i ${var.ips[count.index]}, main.yml"
   }
 
